@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginPage, {
   Username,
   Password,
@@ -8,15 +8,26 @@ import LoginPage, {
 } from "@react-login-page/page5";
 import LoginLogo from "react-login-page/logo";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const styles = { height: 460 };
 
+  const { signInUser } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value;
+    const password = e.target.password.value; 
     console.log("form submitted!", email, password);
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -31,7 +42,10 @@ const Login = () => {
             <LoginLogo />
           </Logo>
           <p className="mt-4">
-            New Here? <Link className="text-blue-300" to="/register">Register Now</Link>{" "}
+            New Here?{" "}
+            <Link className="text-blue-300" to="/register">
+              Register Now
+            </Link>{" "}
           </p>
         </LoginPage>
       </div>

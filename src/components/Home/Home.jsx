@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <h2 className="text-center text-2xl">
-        This is Home for: {authInfo.name}
+        This is Home for
       </h2>
     </div>
   );

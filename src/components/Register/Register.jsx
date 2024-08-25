@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  const createUser = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,6 @@ const Register = () => {
           name="name"
           id="name"
           placeholder="Your Name"
-          required
         />
         <br />
         <input

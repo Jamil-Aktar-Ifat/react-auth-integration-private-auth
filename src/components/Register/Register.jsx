@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const handleSubmit = (e) => {
@@ -11,8 +11,8 @@ const Register = () => {
 
   return (
     <div className="text-center">
-      <h2 className="text-3xl text-center">Please Register</h2>
-      <form onSubmit={handleSubmit} className=" ">
+      <form onSubmit={handleSubmit} className=" bg-gray-200 p-10">
+        <h2 className="text-3xl text-center">Please Register</h2>
         <input
           className="border-2 mt-4 px-4 py-2 w-3/4"
           type="name"
@@ -34,6 +34,7 @@ const Register = () => {
         <div className="flex items-center justify-center relative">
           <input
             className="border-2  px-4 py-2 w-3/4"
+            type="password"
             name="password"
             id="password"
             placeholder="Password"
@@ -51,6 +52,13 @@ const Register = () => {
           value="Register"
           className="btn btn-secondary w-3/4  rounded-none"
         />
+        <p className="mt-4">
+          Already have an account? Please{" "}
+          <Link className="text-green-400" to="/login">
+            {" "}
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

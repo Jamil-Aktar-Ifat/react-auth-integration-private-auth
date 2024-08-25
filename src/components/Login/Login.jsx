@@ -31,7 +31,7 @@ const Login = () => {
             <LoginLogo />
           </Logo>
           <p className="mt-4">
-            New Here? <Link to="/register">Register Now</Link>{" "}
+            New Here? <Link className="text-blue-300" to="/register">Register Now</Link>{" "}
           </p>
         </LoginPage>
       </div>

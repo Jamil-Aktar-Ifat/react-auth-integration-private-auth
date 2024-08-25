@@ -1,7 +1,13 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 const Home = () => {
+  const authInfo = useContext(AuthContext);
   return (
     <div>
-      <h2 className="text-center text-2xl">This is Home</h2>
+      <h2 className="text-center text-2xl">
+        This is Home for: {authInfo.name}
+      </h2>
     </div>
   );
 };

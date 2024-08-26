@@ -7,21 +7,34 @@ import LoginPage, {
   Logo,
 } from "@react-login-page/page5";
 import LoginLogo from "react-login-page/logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const styles = { height: 460 };
 
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const password = e.target.password.value; 
+    const password = e.target.password.value;
     console.log("form submitted!", email, password);
 
     signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        e.target.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
       .then((result) => {
         console.log(result.user);
       })
@@ -46,6 +59,12 @@ const Login = () => {
             <Link className="text-blue-300" to="/register">
               Register Now
             </Link>{" "}
+          </p>
+          <p>
+            Sign in with{" "}
+            <button onClick={handleGoogleSignIn} className="btn btn-ghost">
+              Google
+            </button>
           </p>
         </LoginPage>
       </div>

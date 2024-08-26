@@ -44,31 +44,30 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <div style={styles}>
-        <LoginPage>
-          <Username name="email" placeholder="Your Email" />
-          <Password name="password" placeholder="Your Password" />
-          <Submit>Login</Submit>
-          <Title />
-          <Logo>
-            <LoginLogo />
-          </Logo>
-          <p className="mt-4">
-            New Here?{" "}
-            <Link className="text-blue-300" to="/register">
-              Register Now
-            </Link>{" "}
-          </p>
-          <p>
-            Sign in with{" "}
-            <button onClick={handleGoogleSignIn} className="btn btn-ghost">
-              Google
-            </button>
-          </p>
-        </LoginPage>
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleLogin}>
+        <div style={styles}>
+          <LoginPage>
+            <Username name="email" placeholder="Your Email" />
+            <Password name="password" placeholder="Your Password" />
+            <Submit>Login</Submit>
+            <Title />
+            <Logo>
+              <LoginLogo />
+            </Logo>
+            <p className="mt-4">
+              New Here?{" "}
+              <Link className="text-blue-300" to="/register">
+                Register Now
+              </Link>{" "}
+            </p>
+            <p>
+              Sign in with <button className="text-green-400" onClick={handleGoogleSignIn}>Google</button>
+            </p>
+          </LoginPage>
+        </div>
+      </form>
+    </div>
   );
 };
 
